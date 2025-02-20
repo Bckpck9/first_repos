@@ -1,46 +1,85 @@
 #include <iostream>
-#include <stdio.h>
-#include <ctime>
 using namespace std;
 
-int main()
+
+int perimetr(int &perimeter,int &a,int &b)
 {
-    setlocale(LC_ALL, "ru");
-    int const size = 30;
-    int arr[size];
-    srand(time(NULL));
-    bool r;
-    for (int i = 0;i < size;)
-    {
-        r = false;
-        int newP = rand() % 30;
-        for (int j = 0;j < i;j ++)
-        {
-            if (arr[j] == newP)
-            {
-                r = true;
-                break;
-            }
-        }
-        if (r == false)
-        {
-            arr[i] = newP;
-            i++;
-        }
-    }
-    for (int i = 0;i < size;i++)
-    {
-        cout << arr[i] << endl;
-    }
+    perimeter = a + b + a + b;
+    return perimeter;
+}
 
-    int min=arr[0];
-    for (int i = 1;i < size;i++)
-    {
-        if (arr[i] < min)
-        {
-            min = arr[i];
 
+int square(int &area ,int &a,int &b)
+{
+    area=a * b;
+    return area;
+}
+
+double lengthDiagonal(double &d, int &a, int &b)
+{
+    d =sqrt((a*a)+(b*b));
+    return d;
+}
+
+
+int main(){
+
+    int input;
+    cout<<"Что вы хотите определить?:"<<endl<<"1)Периметр"<<endl<<"2)Площадь"<<endl<<"3)Длину диагонали"<<endl<<"4)Все вместе"<<endl;
+    cin>>input;
+    switch(input)
+    {
+    case 1:
+        {
+            int a,b;//стороны прямоугольника
+            int perimeter;
+            cout<<"Напишите длину стороны a:"<<endl;
+            cin>>a;
+            cout<<"Напишите длину стороны b:"<<endl;
+            cin>>b;
+            perimetr(perimeter,a,b);
+            cout<<"Периметр прямоугольника равен: "<<perimeter;
+            break;
+        }
+    case 2:
+        {
+            int a,b;//стороны прямоугольника
+            int area;
+            cout<<"Напишите длину стороны a:"<<endl;
+            cin>>a;
+            cout<<"Напишите длину стороны b:"<<endl;
+            cin>>b;
+            square(area,a,b);
+            cout<<"Площадь прямоугольника равна: "<<area;
+            break;
+        }
+    case 3:
+        {
+            int a,b;//стороны прямоугольника
+            double length;
+            cout<<"Напишите длину стороны a:"<<endl;
+            cin>>a;
+            cout<<"Напишите длину стороны b:"<<endl;
+            cin>>b;
+            lengthDiagonal(length,a,b);
+            cout<<"Длина диагонали прямоугольника равна: "<<length;
+        }
+    case 4:
+        {
+            int a,b;
+            int perimeter;
+            int area;
+            double length;
+            cout<<"Напишите длину стороны a:"<<endl;
+            cin>>a;
+            cout<<"Напишите длину стороны b:"<<endl;
+            cin>>b;
+            perimetr(perimeter,a,b);
+            cout<<"Периметр прямоугольника равен: "<<perimeter<<endl;
+            square(area,a,b);
+            cout<<"Площадь прямоугольника равна: "<<area<<endl;
+            lengthDiagonal(length,a,b);
+            cout<<"Длина диагонали прямоугольника равна: "<<length<<endl;
         }
     }
-    cout<<"\n" << "Минимальное значение:" << min << endl;
 }
